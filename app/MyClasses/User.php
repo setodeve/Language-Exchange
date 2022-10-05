@@ -99,7 +99,7 @@ class User
     public function getCurrentMeetingList() {
         return $this->currentMeetingList;
     }
-//Carbonクラス作成後着手
+//Meetingクラス作成後以下関数に着手
     private function getAge(){
         return ;
     }
