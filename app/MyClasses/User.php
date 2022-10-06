@@ -23,9 +23,9 @@ class User
         $this->gender = $gender;
         $this->birthday = $birthday;
         $this->nativeLanguages = $nativeLanguages;
-        $this->knownLanguages = $knownLanguages;
-        $this->targetLanguages = $targetLanguages;
-        $this->currentMeetingList = $currentMeetingList;
+        $this->knownLanguages = [$knownLanguages];
+        $this->targetLanguages = [$targetLanguages];
+        $this->currentMeetingList = [$currentMeetingList];
     }
 
     private function setUserName($name) {
@@ -53,15 +53,15 @@ class User
     }
 
     private function setKnownLanguages($knownLanguages) {
-        $this->knownLanguages = $knownLanguages;
+        $this->knownLanguages[] = $knownLanguages;
     }
 
     private function setTargetLanguages($targetLanguages) {
-        $this->targetLanguages = $targetLanguages;
+        $this->targetLanguages[] = $targetLanguages;
     }
 
     private function setCurrentMeetingList($currentMeetingList) {
-        $this->currentMeetingList = $currentMeetingList;
+        $this->currentMeetingList[] = $currentMeetingList;
     }
 
     public function getUserName() {
