@@ -4,7 +4,8 @@ namespace App\MyClasses ;
 
 use PHPUnit\TextUI\XmlConfiguration\CodeCoverage\Report\Php;
 use \Faker\Factory as FakerFactory;
-use Illuminate\Support\Carbon ;
+use Carbon\Carbon;
+
 class User
 {
     private string $userName ;
@@ -101,9 +102,9 @@ class User
     public function getCurrentMeetingList() {
         return $this->currentMeetingList;
     }
-//Meetingクラス作成後以下関数に着手
-    private function getAge(){
-        return ;
+
+    private function getAge($birthday){
+        return Carbon::parse($birthday)->age;
     }
 
 }
