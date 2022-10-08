@@ -103,7 +103,7 @@ class User
         return $this->currentMeetingList;
     }
 
-    private function getAge($birthday){
+    public function getAge($birthday){
         return Carbon::parse($birthday)->age;
     }
 
