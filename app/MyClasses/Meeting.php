@@ -13,8 +13,8 @@ class Meeting
     private string $languageA ;
     private string $languageB ;
     private User $participants ;
-    private int $min ;
-    private int $max ;
+    private int $min = 2 ;
+    private int $max = 10;
 
 
     public function __construct($houseUsername,$title,$meetDate,$location,$languageA,$languageB,$participants)
@@ -26,7 +26,6 @@ class Meeting
         $this->languageA = $languageA ;
         $this->languageB = $languageB ;
         $this->participants[] = $participants ;
-
     }
 
     private function sethouseUsername($houseUsername){
@@ -57,6 +56,14 @@ class Meeting
         $this->participants[] = $participants ;
     }
 
+    private function setmax($number){
+        $this->max = $number ;
+    }
+
+    private function setmin($number){
+        $this->min = $number ;
+    }
+
     public function gethostUsername(){
         return $this->houseUsername ;
     }
@@ -85,4 +92,11 @@ class Meeting
         return $this->participants ;
     }
 
+    public function getmax(){
+        return $this->max ;
+    }
+
+    public function getmin(){
+        return $this->min ;
+    }
 }

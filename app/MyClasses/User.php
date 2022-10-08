@@ -118,7 +118,7 @@ $male = new User($faker->name,
                 "Japanese",
                 "English",
                 "English",
-                [1,3]
+                [1]
                 ) ;
 
 $female = new User($faker->name,
@@ -129,7 +129,17 @@ $female = new User($faker->name,
                 "English",
                 "Japanese",
                 "Japanese",
-                [1,3]
+                [1]
                 ) ;
+
+$meeting = new Meeting(
+                $faker->company,
+                "Mtname",
+                $faker->date($format = 'Y-m-d', $max = 'now'),
+                $faker->address,
+                "English",
+                "Japanese",
+                [$male,$female]
+            ) ;
 
 // echo $faker->name;
