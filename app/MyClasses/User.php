@@ -1,7 +1,9 @@
 <?php
 
-// use PHPUnit\TextUI\XmlConfiguration\CodeCoverage\Report\Php;
-// use \Faker\Factory as FakerFactory
+namespace App\MyClasses ;
+
+use PHPUnit\TextUI\XmlConfiguration\CodeCoverage\Report\Php;
+use \Faker\Factory as FakerFactory;
 
 class User
 {
@@ -106,4 +108,27 @@ class User
 
 }
 
-// $faker = FakerFactory::create()
+$faker = FakerFactory::create() ;
+$male = new User($faker->name,
+                $faker->firstNameMale,
+                $faker->lastName,
+                "male",
+                $faker->date($format = 'Y-m-d', $max = 'now'),
+                "Japanese",
+                "English",
+                "English",
+                [1,3]
+                ) ;
+
+$female = new User($faker->name,
+                $faker->firstNameFemale,
+                $faker->lastName,
+                "female",
+                $faker->date($format = 'Y-m-d', $max = 'now'),
+                "English",
+                "Japanese",
+                "Japanese",
+                [1,3]
+                ) ;
+
+// echo $faker->name;
