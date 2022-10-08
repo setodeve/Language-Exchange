@@ -4,7 +4,7 @@ namespace App\MyClasses ;
 
 use PHPUnit\TextUI\XmlConfiguration\CodeCoverage\Report\Php;
 use \Faker\Factory as FakerFactory;
-
+use Illuminate\Support\Carbon ;
 class User
 {
     private string $userName ;
