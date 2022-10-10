@@ -109,37 +109,38 @@ class User
 
 }
 
-$faker = FakerFactory::create() ;
-$male = new User($faker->name,
-                $faker->firstNameMale,
-                $faker->lastName,
-                "male",
-                $faker->date($format = 'Y-m-d', $max = 'now'),
-                "Japanese",
-                "English",
-                "English",
-                [1]
+function welcome(){
+    $faker = FakerFactory::create() ;
+    $male = new User($faker->name,
+                    $faker->firstNameMale,
+                    $faker->lastName,
+                    "male",
+                    $faker->date($format = 'Y-m-d', $max = 'now'),
+                    "Japanese",
+                    "English",
+                    "English",
+                    [1]
+                    ) ;
+
+    $female = new User($faker->name,
+                    $faker->firstNameFemale,
+                    $faker->lastName,
+                    "female",
+                    $faker->date($format = 'Y-m-d', $max = 'now'),
+                    "English",
+                    "Japanese",
+                    "Japanese",
+                    [1]
+                    ) ;
+
+    $meeting = new Meeting(
+                    $faker->company,
+                    "Mtname",
+                    $faker->date($format = 'Y-m-d', $max = 'now'),
+                    $faker->address,
+                    "English",
+                    "Japanese",
+                    [$male,$female]
                 ) ;
+}
 
-$female = new User($faker->name,
-                $faker->firstNameFemale,
-                $faker->lastName,
-                "female",
-                $faker->date($format = 'Y-m-d', $max = 'now'),
-                "English",
-                "Japanese",
-                "Japanese",
-                [1]
-                ) ;
-
-$meeting = new Meeting(
-                $faker->company,
-                "Mtname",
-                $faker->date($format = 'Y-m-d', $max = 'now'),
-                $faker->address,
-                "English",
-                "Japanese",
-                [$male,$female]
-            ) ;
-
-// echo $faker->name;

@@ -16,6 +16,7 @@
         <title>Home</title>
     </head>
     <body>
+        {{-- {{ $male }} --}}
         <!-- navigation start -->
         <nav class="navbar navbar-expand-lg navbar-light bg-primary px-md-5 text-white">
             <div class="container-fluid">
