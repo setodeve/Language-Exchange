@@ -18,3 +18,4 @@ Route::get('/', function () {
 });
 
 // Route::get('/', 'UserClass@welcome');
+Route::get('/index', 'App\Http\Controllers\IndexController@index');

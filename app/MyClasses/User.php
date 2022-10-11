@@ -26,9 +26,9 @@ class User
         $this->gender = $gender;
         $this->birthday = $birthday;
         $this->nativeLanguages = $nativeLanguages;
-        $this->knownLanguages = [$knownLanguages];
-        $this->targetLanguages = [$targetLanguages];
-        $this->currentMeetingList = [$currentMeetingList];
+        $this->knownLanguages = $knownLanguages;
+        $this->targetLanguages = $targetLanguages;
+        $this->currentMeetingList = $currentMeetingList;
     }
 
     private function setUserName($name) {
