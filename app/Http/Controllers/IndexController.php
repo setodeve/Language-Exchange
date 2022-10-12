@@ -20,6 +20,19 @@ class IndexController extends Controller
                         1
                         ) ;
 
-        return view('index', $male);
+        $female = new User($faker->name,
+                        $faker->firstNameFemale,
+                        $faker->lastName,
+                        "female",
+                        $faker->date($format = 'Y-m-d', $max = 'now'),
+                        "English",
+                        "Japanese",
+                        "Japanese",
+                        1
+                        ) ;
+        $userArray = array($male,$female) ;
+        // dd($userArray) ;
+        // print_r($userArray[0]->userName) ;
+        return view('index', compact('male','female'));
     }
 }

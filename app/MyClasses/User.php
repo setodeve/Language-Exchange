@@ -8,15 +8,15 @@ use Carbon\Carbon;
 
 class User
 {
-    private string $userName ;
-    private string $firstName ;
-    private string $lastName ;
-    private string $gender ;
-    private string $birthday ;
-    private string $nativeLanguages ;
-    private string $knownLanguages ;
-    private string $targetLanguages ;
-    private string $currentMeetingList ;
+    public string $userName ;
+    public string $firstName ;
+    public string $lastName ;
+    public string $gender ;
+    public string $birthday ;
+    public string $nativeLanguages ;
+    public string $knownLanguages ;
+    public string $targetLanguages ;
+    public string $currentMeetingList ;
 
     public function __construct($name,$firstName,$lastName,$gender,$birthday,$nativeLanguages,$knownLanguages,$targetLanguages,$currentMeetingList)
     {
