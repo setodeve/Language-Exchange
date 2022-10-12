@@ -5,6 +5,6 @@
   <title>My First Page</title>
 </head>
 <body>
-  <p>{{$male}}</p>
+  <p>{{$userName}}</p>
 </body>
 </html>
