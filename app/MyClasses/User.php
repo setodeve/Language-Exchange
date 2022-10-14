@@ -68,6 +68,10 @@ class User
         $this->currentMeetingList[] = $currentMeetingList;
     }
 
+    private function setuserImage($image){
+        $this->userImage = $image ;
+    }
+
     public function getUserName() {
         return $this->userName;
     }
@@ -102,6 +106,10 @@ class User
 
     public function getCurrentMeetingList() {
         return $this->currentMeetingList;
+    }
+
+    public function getuserImage(){
+        return $this->userImage ;
     }
 
     public function getAge($birthday){
