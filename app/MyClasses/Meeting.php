@@ -65,6 +65,10 @@ class Meeting
         $this->min = $number ;
     }
 
+    private function setplaceImage($image){
+        $this->placeImage = $image ;
+    }
+
     public function gethostUsername(){
         return $this->houseUsername ;
     }
@@ -99,5 +103,9 @@ class Meeting
 
     public function getmin(){
         return $this->min ;
+    }
+
+    public function getplaceImage(){
+        return $this->placeImage ;
     }
 }
