@@ -6,18 +6,18 @@ namespace App\MyClasses ;
 
 class Meeting
 {
-    private string $houseUsername ;
-    private string $title ;
-    private string $meetDate ;
-    private string $location ;
-    private string $languageA ;
-    private string $languageB ;
-    private User $participants ;
-    private int $min = 2 ;
-    private int $max = 10;
+    public string $houseUsername ;
+    public string $title ;
+    public string $meetDate ;
+    public string $location ;
+    public string $languageA ;
+    public string $languageB ;
+    public string $participants ;
+    public int $min = 2 ;
+    public int $max = 10;
+    public string $placeImage ;
 
-
-    public function __construct($houseUsername,$title,$meetDate,$location,$languageA,$languageB,$participants)
+    public function __construct($houseUsername,$title,$meetDate,$location,$languageA,$languageB,$participants,$placeImage)
     {
         $this->houseUsername = $houseUsername ;
         $this->title = $title ;
@@ -25,7 +25,8 @@ class Meeting
         $this->location = $location ;
         $this->languageA = $languageA ;
         $this->languageB = $languageB ;
-        $this->participants[] = $participants ;
+        $this->participants = $participants ;
+        $this->placeImage = $placeImage ;
     }
 
     private function sethouseUsername($houseUsername){
