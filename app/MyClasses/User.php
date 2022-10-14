@@ -3,7 +3,6 @@
 namespace App\MyClasses ;
 
 use PHPUnit\TextUI\XmlConfiguration\CodeCoverage\Report\Php;
-use \Faker\Factory as FakerFactory;
 use Carbon\Carbon;
 
 class User
@@ -17,8 +16,9 @@ class User
     public string $knownLanguages ;
     public string $targetLanguages ;
     public string $currentMeetingList ;
+    public string $userImage ;
 
-    public function __construct($name,$firstName,$lastName,$gender,$birthday,$nativeLanguages,$knownLanguages,$targetLanguages,$currentMeetingList)
+    public function __construct($name,$firstName,$lastName,$gender,$birthday,$nativeLanguages,$knownLanguages,$targetLanguages,$currentMeetingList,$userImage)
     {
         $this->userName = $name;
         $this->firstName = $firstName;
@@ -29,6 +29,7 @@ class User
         $this->knownLanguages = $knownLanguages;
         $this->targetLanguages = $targetLanguages;
         $this->currentMeetingList = $currentMeetingList;
+        $this->userImage = $userImage;
     }
 
     private function setUserName($name) {
@@ -109,38 +110,4 @@ class User
 
 }
 
-function welcome(){
-    $faker = FakerFactory::create() ;
-    $male = new User($faker->name,
-                    $faker->firstNameMale,
-                    $faker->lastName,
-                    "male",
-                    $faker->date($format = 'Y-m-d', $max = 'now'),
-                    "Japanese",
-                    "English",
-                    "English",
-                    [1]
-                    ) ;
-
-    $female = new User($faker->name,
-                    $faker->firstNameFemale,
-                    $faker->lastName,
-                    "female",
-                    $faker->date($format = 'Y-m-d', $max = 'now'),
-                    "English",
-                    "Japanese",
-                    "Japanese",
-                    [1]
-                    ) ;
-
-    $meeting = new Meeting(
-                    $faker->company,
-                    "Mtname",
-                    $faker->date($format = 'Y-m-d', $max = 'now'),
-                    $faker->address,
-                    "English",
-                    "Japanese",
-                    [$male,$female]
-                ) ;
-}
 

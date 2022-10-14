@@ -16,7 +16,7 @@
         <title>Home</title>
     </head>
     <body>
-        {{ $userArray[0]->userName }}
+
         <!-- navigation start -->
         <nav class="navbar navbar-expand-lg navbar-light bg-primary px-md-5 text-white">
             <div class="container-fluid">
@@ -147,46 +147,25 @@
 
         <div class='container'>
             <p class='pt-4 pb-2'>Members</p>
+            @for($i = 0; $i < count($userArray); $i++)
+                <div class="card col-lg-8 my-1">
+                    <div class="card-body d-flex px-0">
+                        <div class='col-lg-2 col-3 d-flex justify-content-center align-items-center'>
+                            <img class="avator" src="{{ $userArray[$i]->userImage }}" alt="">
+                        </div>
 
-            <!-- user1 start -->
-            <div class="card col-lg-8 my-1">
-                <div class="card-body d-flex px-0">
-                    <div class='col-lg-2 col-3 d-flex justify-content-center align-items-center'>
-                        <img class="avator" src="https://i.pravatar.cc/150?img=2" alt="">
-                    </div>
-
-                    <div class='d-flex align-items-center'>
-                        <div>
-                            <p class='fw-bold'>Shannon B.</p>
-                            <p>Native language: Japanese</p>
-                            <p>Nnown Languages: Chinese</p>
-                            <p>Target Languages: English, French </p>
+                        <div class='d-flex align-items-center'>
+                            <div>
+                                <p class='fw-bold'>{{ $userArray[$i]->userName }}</p>
+                                <p>Native language: {{ $userArray[$i]->nativeLanguages }}</p>
+                                <p>Nnown Languages: {{ $userArray[$i]->knownLanguages }}</p>
+                                <p>Target Languages: {{ $userArray[$i]->targetLanguages }} </p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-             <!-- user1 end -->
-
-            <!-- user2 start -->
-            <div class="card col-lg-8 my-1">
-                <div class="card-body d-flex px-0">
-                    <div class='col-lg-2 col-3 d-flex justify-content-center align-items-center'>
-                        <img class="avator" src="https://i.pravatar.cc/150?img=12" alt="">
-                    </div>
-
-                    <div class='d-flex align-items-center'>
-                        <div>
-                            <p class='fw-bold'>Robert</p>
-                            <p>Native language: English</p>
-                            <p>Nnown Languages: None</p>
-                            <p>Target Languages: Japanese </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- user2 end -->
-
-
+            @endfor
+        </div>
         <div class='d-flex mt-5 bg-primary text-white pb-2'>
             <div class='col-6 px-5 pt-3'>
                 <p>Meetup All Rights Reserved 2021</p>

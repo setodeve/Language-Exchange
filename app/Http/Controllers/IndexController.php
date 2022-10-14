@@ -9,27 +9,6 @@ class IndexController extends Controller
 {
     public function index(){
         $faker = FakerFactory::create() ;
-        $male = new User($faker->name,
-                        $faker->firstNameMale,
-                        $faker->lastName,
-                        "male",
-                        $faker->date($format = 'Y-m-d', $max = 'now'),
-                        "Japanese",
-                        "English",
-                        "English",
-                        1
-                        ) ;
-
-        $female = new User($faker->name,
-                        $faker->firstNameFemale,
-                        $faker->lastName,
-                        "female",
-                        $faker->date($format = 'Y-m-d', $max = 'now'),
-                        "English",
-                        "Japanese",
-                        "Japanese",
-                        1
-                        ) ;
         $userArray = array( new User($faker->name,
                             $faker->firstNameMale,
                             $faker->lastName,
@@ -38,7 +17,9 @@ class IndexController extends Controller
                             "Japanese",
                             "English",
                             "English",
-                            1) ,
+                            1,
+                            $faker->imageUrl($width = 150, $height = 150)
+                            ) ,
                             new User($faker->name,
                             $faker->firstNameFemale,
                             $faker->lastName,
@@ -47,7 +28,9 @@ class IndexController extends Controller
                             "English",
                             "Japanese",
                             "Japanese",
-                            1)
+                            1,
+                            $faker->imageUrl($width = 150, $height = 150)
+                            )
                             );
         // dd($userArray) ;
         // print_r($userArray[0]->userName) ;
