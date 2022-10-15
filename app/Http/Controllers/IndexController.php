@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 class IndexController extends Controller
 {
     public $userArray ;
+
     public function index(){
         $faker = FakerFactory::create() ;
         $this->userArray = array(
@@ -52,7 +53,7 @@ class IndexController extends Controller
         ]);
     }
 
-    public function getUserInfo(){
+    public static function getUserInfo(){
         return $this->userArray ;
     }
 }
