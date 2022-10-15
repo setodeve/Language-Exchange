@@ -8,9 +8,10 @@ use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
+    public $userArray ;
     public function index(){
         $faker = FakerFactory::create() ;
-        $userArray = array(
+        $this->userArray = array(
             new User($faker->name,
             $faker->firstNameMale,
             $faker->lastName,
@@ -32,7 +33,7 @@ class IndexController extends Controller
             "Japanese",
             1,
             $faker->imageUrl($width = 150, $height = 150)
-        )
+        ),
         );
         $MeetingData = array(new Meeting(
             "RoomA",
@@ -44,9 +45,14 @@ class IndexController extends Controller
             "User",
             $faker->imageUrl($width = 300, $height = 150)
         )) ;
-        // dd($userArray) ;
-        // print_r($userArray[0]->userName) ;
-        // return view('index', compact('male','female'));
-        return view('index', compact('userArray','MeetingData'));
+
+        return view('index')->with([
+            "MeetingData" => $MeetingData,
+            "userArray" => $this->userArray
+        ]);
+    }
+
+    public function getUserInfo(){
+        return $this->userArray ;
     }
 }
