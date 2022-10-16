@@ -54,6 +54,6 @@ class IndexController extends Controller
     }
 
     public static function getUserInfo(){
-        return $this->userArray ;
+        // return $this->userArray ;
     }
 }
