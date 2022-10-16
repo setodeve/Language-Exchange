@@ -21,6 +21,16 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'userName',
+        'firstName',
+        'lastName',
+        'gender',
+        'birthday',
+        'nativeLanguages',
+        'knownLanguages',
+        'targetLanguages',
+        'currentMeetingList',
+        'userImage',
     ];
 
     /**
