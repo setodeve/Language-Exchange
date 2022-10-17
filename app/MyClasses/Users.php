@@ -5,7 +5,7 @@ namespace App\MyClasses ;
 use PHPUnit\TextUI\XmlConfiguration\CodeCoverage\Report\Php;
 use Carbon\Carbon;
 
-class User
+class Users
 {
     public string $userName ;
     public string $firstName ;

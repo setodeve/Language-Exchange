@@ -2,40 +2,34 @@
 
 namespace App\Http\Controllers;
 use \Faker\Factory as FakerFactory;
-use App\MyClasses\User;
+use App\MyClasses\Users;
 use App\MyClasses\Meeting;
 use Illuminate\Http\Request;
-
+use App\Models\User;
 class IndexController extends Controller
 {
-    public $userArray ;
+    public $userArray  = array() ;
 
     public function index(){
         $faker = FakerFactory::create() ;
-        $this->userArray = array(
-            new User($faker->name,
-            $faker->firstNameMale,
-            $faker->lastName,
-            "male",
-            $faker->date($format = 'Y-m-d', $max = 'now'),
-            "Japanese",
-            "English",
-            "English",
-            1,
-            $faker->imageUrl($width = 150, $height = 150)
-        ) ,
-            new User($faker->name,
-            $faker->firstNameFemale,
-            $faker->lastName,
-            "female",
-            $faker->date($format = 'Y-m-d', $max = 'now'),
-            "English",
-            "Japanese",
-            "Japanese",
-            1,
-            $faker->imageUrl($width = 150, $height = 150)
-        ),
-        );
+        $users = User::get() ;
+        $userArray = array() ;
+        for($i = 0; $i < count($users); $i++){
+            // echo $users[$i] ;
+            $userArray[] =
+                new Users(
+                    $users[$i]->userName,
+                    $users[$i]->firstName,
+                    $users[$i]->lastName,
+                    $users[$i]->gender,
+                    $users[$i]->birthday,
+                    $users[$i]->nativeLanguages ,
+                    $users[$i]->knownLanguages ,
+                    $users[$i]->targetLanguages ,
+                    $users[$i]->currentMeetingList,
+                    $users[$i]->userImage
+                );
+        }
         $MeetingData = array(new Meeting(
             "RoomA",
             "Meet Up!!",
@@ -49,11 +43,11 @@ class IndexController extends Controller
 
         return view('index')->with([
             "MeetingData" => $MeetingData,
-            "userArray" => $this->userArray
+            "userArray" => $userArray
         ]);
     }
 
-    public static function getUserInfo(){
-        // return $this->userArray ;
+    public function getUserInfo(){
+        return $this->userArray ;
     }
 }
