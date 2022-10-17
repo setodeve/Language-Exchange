@@ -17,4 +17,6 @@ Route::get('/', 'App\Http\Controllers\IndexController@index');
 
 Route::get('/users', 'App\Http\Controllers\IndexController@userList');
 
+Route::get('/users/{language}', 'App\Http\Controllers\IndexController@targetuserList');
+
 Route::get('/meetings', 'App\Http\Controllers\IndexController@meetupList');

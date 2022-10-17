@@ -16,13 +16,11 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     public function getUsers(){
-        $users = User::get() ;
         $userArray = array() ;
         $loggedInUser = $this->getLoggedInUser() ;
+        $users = User::where('knownLanguages', '=', $loggedInUser->targetLanguages)
+        ->orWhere('targetLanguages', '=', $loggedInUser->targetLanguages)->get();
         for($i = 0; $i < count($users); $i++){
-            if($users[$i]->targetLanguages == $loggedInUser->targetLanguages ||
-               $users[$i]->knownLanguages == $loggedInUser->targetLanguages)
-            {
                 $userArray[] =
                 new Users(
                     $users[$i]->userName,
@@ -36,31 +34,49 @@ class Controller extends BaseController
                     $users[$i]->currentMeetingList,
                     $users[$i]->userImage
                 );
-            }
+        }
+        return $userArray ;
+    }
+
+    public function getTargetUsers($language){
+        $users = User::where('knownLanguages', '=', $language)
+        ->orWhere('targetLanguages', '=', $language)->get();
+        $userArray = array() ;
+        for($i = 0; $i < count($users); $i++){
+            $userArray[] =
+            new Users(
+                $users[$i]->userName,
+                $users[$i]->firstName,
+                $users[$i]->lastName,
+                $users[$i]->gender,
+                $users[$i]->birthday,
+                $users[$i]->nativeLanguages ,
+                $users[$i]->knownLanguages ,
+                $users[$i]->targetLanguages ,
+                $users[$i]->currentMeetingList,
+                $users[$i]->userImage
+            );
         }
         return $userArray ;
     }
 
     public function getMeetings(){
-        $meetings = Meeting::get() ;
-        $MeetingData = array();
         $loggedInUser = $this->getLoggedInUser() ;
+        $meetings = Meeting::where('languageA', '=', $loggedInUser->targetLanguages)
+        ->orWhere('languageB', '=', $loggedInUser->targetLanguages)->get();
+        $MeetingData = array();
         for($i = 0; $i < count($meetings); $i++){
-            if($meetings[$i]->languageA == $loggedInUser->targetLanguages ||
-            $meetings[$i]->languageB == $loggedInUser->targetLanguages)
-         {
             $MeetingData[] =
-                new Meetings(
-                    $meetings[$i]->houseUsername,
-                    $meetings[$i]->title,
-                    $meetings[$i]->meetDate,
-                    $meetings[$i]->location,
-                    $meetings[$i]->languageA,
-                    $meetings[$i]->languageB,
-                    $meetings[$i]->participants,
-                    $meetings[$i]->placeImage
-                ) ;
-            }
+            new Meetings(
+                $meetings[$i]->houseUsername,
+                $meetings[$i]->title,
+                $meetings[$i]->meetDate,
+                $meetings[$i]->location,
+                $meetings[$i]->languageA,
+                $meetings[$i]->languageB,
+                $meetings[$i]->participants,
+                $meetings[$i]->placeImage
+            ) ;
         }
         return $MeetingData ;
     }

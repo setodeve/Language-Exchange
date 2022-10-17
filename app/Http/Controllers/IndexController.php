@@ -20,6 +20,13 @@ class IndexController extends Controller
         ]);
     }
 
+    public function targetuserList($language){
+        return view('users')->with([
+            "userArray" =>  Controller::getTargetUsers($language),
+            "loggedInUser" => Controller::getLoggedInUser()
+        ]);
+    }
+
     public function meetupList(){
         return view('meetings')->with([
             "MeetingData" => Controller::getMeetings(),
