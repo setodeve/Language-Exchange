@@ -38,7 +38,7 @@
 
                     </ul>
                 </div>
-                <p class='d-none d-lg-block'>username: recursion</p>
+                <p class='d-none d-lg-block'>username: {{ $loggedInUser->userName }}</p>
             </div>
         </nav>
         <!-- navigation end -->

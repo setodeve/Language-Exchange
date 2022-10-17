@@ -54,4 +54,9 @@ class Controller extends BaseController
         }
         return $MeetingData ;
     }
+
+    public function getLoggedInUser(){
+        return Users::createFakeSignedInUser();
+    }
+
 }

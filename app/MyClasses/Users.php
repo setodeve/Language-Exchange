@@ -4,6 +4,7 @@ namespace App\MyClasses ;
 
 use PHPUnit\TextUI\XmlConfiguration\CodeCoverage\Report\Php;
 use Carbon\Carbon;
+use \Faker\Factory as FakerFactory;
 
 class Users
 {
@@ -114,6 +115,23 @@ class Users
 
     public function getAge($birthday){
         return Carbon::parse($birthday)->age;
+    }
+
+    public static function createFakeSignedInUser(){
+        $faker = FakerFactory::create();
+        $LoggedInUser =  new Users(
+            $faker->name(),
+            $faker->firstName('male'),
+            $faker->lastName,
+            'male',
+            '1900-01-01',
+            "Japanese",
+            "English",
+            "Chinese",
+            0,
+            $faker->imageUrl($width = 150, $height = 150)
+        );
+        return $LoggedInUser ;
     }
 
 }
