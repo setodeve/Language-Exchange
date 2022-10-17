@@ -11,4 +11,12 @@ class IndexController extends Controller
             "userArray" => Controller::getUsers()
         ]);
     }
+
+    public function userList(){
+        return view('users')->with(["userArray" =>  Controller::getUsers()]);
+    }
+
+    public function meetupList(){
+        return view('meetings')->with(["MeetingData" => Controller::getMeetings()]);
+    }
 }

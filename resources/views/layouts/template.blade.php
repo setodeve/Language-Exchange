@@ -20,7 +20,7 @@
         <!-- navigation start -->
         <nav class="navbar navbar-expand-lg navbar-light bg-primary px-md-5 text-white">
             <div class="container-fluid">
-                <a class="navbar-brand text-white" href="#">Language Exchange</a>
+                <a class="navbar-brand text-white" href="/">Language Exchange</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -33,7 +33,7 @@
                             <a class="nav-link text-white" href="/users">User</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Meetup</a>
+                            <a class="nav-link text-white" href="/meetings">Meetup</a>
                         </li>
 
                     </ul>

@@ -15,4 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'App\Http\Controllers\IndexController@index');
 
-Route::get('/users', 'App\Http\Controllers\UserController@userList');
+Route::get('/users', 'App\Http\Controllers\IndexController@userList');
+
+Route::get('/meetings', 'App\Http\Controllers\IndexController@meetupList');
