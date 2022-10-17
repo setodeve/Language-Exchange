@@ -44,7 +44,11 @@ class Controller extends BaseController
     public function getMeetings(){
         $meetings = Meeting::get() ;
         $MeetingData = array();
+        $loggedInUser = $this->getLoggedInUser() ;
         for($i = 0; $i < count($meetings); $i++){
+            if($meetings[$i]->languageA == $loggedInUser->targetLanguages ||
+            $meetings[$i]->languageB == $loggedInUser->targetLanguages)
+         {
             $MeetingData[] =
                 new Meetings(
                     $meetings[$i]->houseUsername,
@@ -56,6 +60,7 @@ class Controller extends BaseController
                     $meetings[$i]->participants,
                     $meetings[$i]->placeImage
                 ) ;
+            }
         }
         return $MeetingData ;
     }
