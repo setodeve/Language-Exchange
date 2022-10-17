@@ -11,6 +11,9 @@ use App\MyClasses\Users;
 use App\Models\User;
 use App\MyClasses\Meetings;
 use App\Models\Meeting;
+// use GuzzleHttp\Psr7\Request;
+use Illuminate\Http\Request;
+
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
@@ -60,11 +63,25 @@ class Controller extends BaseController
         return $userArray ;
     }
 
-    public function getMeetings(){
+    public function getMeetings(Request $request){
         $loggedInUser = $this->getLoggedInUser() ;
-        $meetings = Meeting::where('languageA', '=', $loggedInUser->targetLanguages)
-        ->orWhere('languageB', '=', $loggedInUser->targetLanguages)->get();
         $MeetingData = array();
+
+        if(!$request->exists('languageA') && !$request->exists('languageB') &&
+           !$request->exists('min') && !$request->exists('max')){
+            $meetings = Meeting::where('languageA', '=', $loggedInUser->targetLanguages)
+            ->orWhere('languageB', '=', $loggedInUser->targetLanguages)->get();
+        }else{
+            $lanA = $request->query('languageA') ;
+            $lanB = $request->query('languageB') ;
+            $min = $request->query('min') ;
+            $max = $request->query('max') ;
+            $meetings = Meeting::where('languageA', '=', $lanA)
+            ->orWhere('languageB', '=', $lanB)
+            ->Where('min', '=', $min)
+            ->Where('max', '=', $max)->get();
+        }
+
         for($i = 0; $i < count($meetings); $i++){
             $MeetingData[] =
             new Meetings(
