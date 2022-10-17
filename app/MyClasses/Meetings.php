@@ -4,7 +4,7 @@ namespace App\MyClasses ;
 
 
 
-class Meeting
+class Meetings
 {
     public string $houseUsername ;
     public string $title ;

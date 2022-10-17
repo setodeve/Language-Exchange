@@ -9,6 +9,8 @@ use Illuminate\Routing\Controller as BaseController;
 
 use App\MyClasses\Users;
 use App\Models\User;
+use App\MyClasses\Meetings;
+use App\Models\Meeting;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
@@ -32,5 +34,24 @@ class Controller extends BaseController
                 );
         }
         return $userArray ;
+    }
+
+    public function getMeetings(){
+        $meetings = Meeting::get() ;
+        $MeetingData = array();
+        for($i = 0; $i < count($meetings); $i++){
+            $MeetingData[] =
+                new Meetings(
+                    $meetings[$i]->houseUsername,
+                    $meetings[$i]->title,
+                    $meetings[$i]->meetDate,
+                    $meetings[$i]->location,
+                    $meetings[$i]->languageA,
+                    $meetings[$i]->languageB,
+                    $meetings[$i]->participants,
+                    $meetings[$i]->placeImage
+                ) ;
+        }
+        return $MeetingData ;
     }
 }
