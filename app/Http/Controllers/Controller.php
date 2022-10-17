@@ -18,8 +18,12 @@ class Controller extends BaseController
     public function getUsers(){
         $users = User::get() ;
         $userArray = array() ;
+        $loggedInUser = $this->getLoggedInUser() ;
         for($i = 0; $i < count($users); $i++){
-            $userArray[] =
+            if($users[$i]->targetLanguages == $loggedInUser->targetLanguages ||
+               $users[$i]->knownLanguages == $loggedInUser->targetLanguages)
+            {
+                $userArray[] =
                 new Users(
                     $users[$i]->userName,
                     $users[$i]->firstName,
@@ -32,6 +36,7 @@ class Controller extends BaseController
                     $users[$i]->currentMeetingList,
                     $users[$i]->userImage
                 );
+            }
         }
         return $userArray ;
     }
