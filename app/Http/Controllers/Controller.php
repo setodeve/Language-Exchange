@@ -41,9 +41,31 @@ class Controller extends BaseController
         return $userArray ;
     }
 
+    public function getTargetUsers($language){
+        $users = User::where('knownLanguages', '=', $language)
+        ->orWhere('targetLanguages', '=', $language)->get();
+        $userArray = [] ;
+        for($i = 0; $i < count($users); $i++){
+            $userArray[] =
+            new Users(
+                $users[$i]->userName,
+                $users[$i]->firstName,
+                $users[$i]->lastName,
+                $users[$i]->gender,
+                $users[$i]->birthday,
+                $users[$i]->nativeLanguages ,
+                $users[$i]->knownLanguages ,
+                $users[$i]->targetLanguages ,
+                $users[$i]->currentMeetingList,
+                $users[$i]->userImage
+            );
+        }
+        return $userArray ;
+    }
+
     public function getMeetings(Request $request){
-        $loggedInUser = $this->getLoggedInUser() ;
         $MeetingData = [];
+        $loggedInUser = $this->getLoggedInUser() ;
 
         if(!$request->exists('languageA') && !$request->exists('languageB') &&
            !$request->exists('min') && !$request->exists('max')){
@@ -75,7 +97,6 @@ class Controller extends BaseController
         }
         return $MeetingData ;
     }
-
 
     public function getLoggedInUser(){
         return Users::createFakeSignedInUser();
