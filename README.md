@@ -1,7 +1,5 @@
 ## Recursionでのlaravel課題
 
-以下について理解
-
 * namespaceの使い方
 * オブジェクト指向を意識した実装の仕方
 * HTTP Requests
