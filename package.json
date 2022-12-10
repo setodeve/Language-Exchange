@@ -10,9 +10,14 @@
         "production": "mix --production"
     },
     "devDependencies": {
+        "@babel/types": "^7.20.5",
         "axios": "^0.21",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
         "postcss": "^8.1.14"
+    },
+    "dependencies": {
+        "caniuse-lite": "^1.0.30001439",
+        "node-notifier": "^10.0.1"
     }
 }
