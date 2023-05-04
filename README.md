@@ -1,4 +1,3 @@
-## Recursionでのlaravel課題
 
 * namespaceの使い方
 * オブジェクト指向を意識した実装の仕方
